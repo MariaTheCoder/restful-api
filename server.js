@@ -13,4 +13,7 @@ db.once("open", () => console.log("Connected to Database..."));
 
 app.use(express.json());
 
+const membersRouter = require("./routes/members");
+app.use("/members", membersRouter);
+
 app.listen(port, () => console.log("Server started..."));
