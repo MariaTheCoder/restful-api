@@ -1,5 +1,13 @@
 GET http://localhost:3000/members 
 
 ###
-
 GET http://localhost:3000/members/8
+
+###
+POST http://localhost:3000/members 
+Content-Type: application/json
+
+{
+    "name": "Kerim G", 
+    "memberTitle": "CEO"
+}
