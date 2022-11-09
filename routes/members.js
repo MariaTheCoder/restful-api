@@ -38,8 +38,13 @@ router.patch("/:id", (req, res) => {
 });
 
 // Delete one member
-router.delete("/:id", (req, res) => {
-  //
+router.delete("/:id", getMember, async (req, res) => {
+  try {
+    await res.member.remove();
+    res.json({ message: "Deleted Member" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 async function getMember(req, res, next) {
