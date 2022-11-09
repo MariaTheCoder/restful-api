@@ -45,6 +45,10 @@ router.delete("/:id", (req, res) => {
 async function getMember(req, res, next) {
   let member;
 
+  if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(404).json({ message: "Cannot find member" });
+  }
+
   try {
     member = await Member.findById(req.params.id);
     if (member == null) {
