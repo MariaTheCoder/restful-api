@@ -33,8 +33,20 @@ router.post("/", async (req, res) => {
 });
 
 // Update one member
-router.patch("/:id", (req, res) => {
-  //
+router.patch("/:id", getMember, async (req, res) => {
+  if (req.body.name != null) {
+    res.member.name = req.body.name;
+  }
+  if (req.body.memberTitle != null) {
+    res.member.memberTitle = req.body.memberTitle;
+  }
+
+  try {
+    const updatedMember = await res.member.save();
+    res.json(updatedMember);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 // Delete one member

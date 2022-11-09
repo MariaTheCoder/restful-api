@@ -17,3 +17,13 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/members/636a95721c789babb255c743
+
+###
+
+PATCH http://localhost:3000/members/636a9737b98a93995c8f1c97
+Content-Type: application/json
+
+{
+    "name": "Gizem G",
+    "memberTitle": "Board member"
+}
